@@ -5,8 +5,8 @@
 # Weekly Status - Week 02
 
 <!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
-- FULL_NAME:
-- GITHUB_USER:
+- FULL_NAME: Angie Valentina Florez Vargas
+- GITHUB_USER: Angie20000
 - TEAM:
 - SPRINT_GOAL:
 <!-- CONFIG-END -->
