@@ -2,7 +2,7 @@
    10-week/hu-status/README.md  (inside YOUR fork). English. -->
 # Weekly Status - Week 10
 
-FULL_NAME: <WRITE-YOUR-FULL-NAME-HERE>
+FULL_NAME: Angie Valentina Florez Vargas
 GITHUB_USER: Angie20000
 TEAM: Pms_Property
 SPRINT_GOAL: Bring the contracts, requirements and diagrams in line with the accepted

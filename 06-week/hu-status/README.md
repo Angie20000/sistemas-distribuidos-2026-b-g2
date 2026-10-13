@@ -1,12 +1,15 @@
-<!-- Your weekly grade is read AUTOMATICALLY from this file:
-   06-week/hu-status/README.md  (inside YOUR fork). English. -->
+<!-- HU-STATUS TEMPLATE - do NOT remove the <!-- ... --> markers or the table headers.
+     Your weekly grade is read AUTOMATICALLY from this file:
+       06-week/hu-status/README.md  (inside YOUR fork). English. -->
+
 # Weekly Status - Week 06
 
-FULL_NAME: <WRITE-YOUR-FULL-NAME-HERE>
-GITHUB_USER: Angie20000
-TEAM: Pms_Property
-SPRINT_GOAL: Define the environment and configuration strategy (develop/qa/prod) for
-the 5 microservices and orchestrate them locally with Docker Compose.
+<!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
+- FULL_NAME: Angie Valentina Florez Vargas
+- GITHUB_USER: Angie20000
+- TEAM: Pms_Property
+- SPRINT_GOAL: Define the environment and configuration strategy (develop/qa/prod) for the 5 microservices and orchestrate them locally with Docker Compose.
+<!-- CONFIG-END -->
 
 ## 1. User stories worked this week
 
