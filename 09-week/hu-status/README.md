@@ -1,14 +1,15 @@
-<!-- Your weekly grade is read AUTOMATICALLY from this file:
-   09-week/hu-status/README.md  (inside YOUR fork). English. -->
+<!-- HU-STATUS TEMPLATE - do NOT remove the <!-- ... --> markers or the table headers.
+     Your weekly grade is read AUTOMATICALLY from this file:
+       09-week/hu-status/README.md  (inside YOUR fork). English. -->
+
 # Weekly Status - Week 09
 
-FULL_NAME: Angie Valentina Florez Vargas
-GITHUB_USER: Angie20000
-TEAM: Pms_Property
-SPRINT_GOAL: Finish the API contract layer and align it with the course norm (single
-error envelope, money in integer cents), and record the architecture decisions the new
-topology needs — orchestrated Saga, hexagonal guide, price lookup from Booking to
-Catalog — plus the Catalog and Identity data models.
+<!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
+- FULL_NAME: Angie Valentina Florez Vargas
+- GITHUB_USER: Angie20000
+- TEAM: Pms_Property
+- SPRINT_GOAL: Finish the API contract layer and align it with the course norm (single error envelope, money in integer cents), and record the architecture decisions the new topology needs — orchestrated Saga, hexagonal guide, price lookup from Booking to Catalog — plus the Catalog and Identity data models.
+<!-- CONFIG-END -->
 
 ## 1. User stories worked this week
 

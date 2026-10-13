@@ -1,13 +1,15 @@
-<!-- Your weekly grade is read AUTOMATICALLY from this file:
-   10-week/hu-status/README.md  (inside YOUR fork). English. -->
+<!-- HU-STATUS TEMPLATE - do NOT remove the <!-- ... --> markers or the table headers.
+     Your weekly grade is read AUTOMATICALLY from this file:
+       10-week/hu-status/README.md  (inside YOUR fork). English. -->
+
 # Weekly Status - Week 10
 
-FULL_NAME: Angie Valentina Florez Vargas
-GITHUB_USER: Angie20000
-TEAM: Pms_Property
-SPRINT_GOAL: Bring the contracts, requirements and diagrams in line with the accepted
-architecture (orchestrated Saga, ADR-015) and start the web application: the container
-that mounts the portals, the catalog and booking portals, and the CI that guards them.
+<!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
+- FULL_NAME: Angie Valentina Florez Vargas
+- GITHUB_USER: Angie20000
+- TEAM: Pms_Property
+- SPRINT_GOAL: Bring the contracts, requirements and diagrams in line with the accepted architecture (orchestrated Saga, ADR-015) and start the web application: the container that mounts the portals, the catalog and booking portals, and the CI that guards them.
+<!-- CONFIG-END -->
 
 ## 1. User stories worked this week
 

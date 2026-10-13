@@ -1,13 +1,15 @@
-<!-- Your weekly grade is read AUTOMATICALLY from this file:
-   08-week/hu-status/README.md  (inside YOUR fork). English. -->
+<!-- HU-STATUS TEMPLATE - do NOT remove the <!-- ... --> markers or the table headers.
+     Your weekly grade is read AUTOMATICALLY from this file:
+       08-week/hu-status/README.md  (inside YOUR fork). English. -->
+
 # Weekly Status - Week 08
 
-FULL_NAME: Angie Valentina Florez Vargas
-GITHUB_USER: Angie20000
-TEAM: Pms_Property
-SPRINT_GOAL: Start the API contract layer — first drafts of the notification and
-payment OpenAPI files, the API guidelines for domains and microservices, and the
-closed project API contract.
+<!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
+- FULL_NAME: Angie Valentina Florez Vargas
+- GITHUB_USER: Angie20000
+- TEAM: Pms_Property
+- SPRINT_GOAL: Start the API contract layer — first drafts of the notification and payment OpenAPI files, the API guidelines for domains and microservices, and the closed project API contract.
+<!-- CONFIG-END -->
 
 ## 1. User stories worked this week
 
