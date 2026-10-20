@@ -1,0 +1,75 @@
+groups:
+  # Expiry journey (property-worker -> booking-service). Week 11, CP7.
+  # SLO 1: 99 % of job runs do not fail      -> budget 0.01
+  # SLO 2: 99 % of expirar calls <= 0.25 s    -> budget 0.01
+  - name: expiry-job-slo
+    interval: 1m
+    rules:
+      - alert: ExpiryJobFastBurn
+        # 14.4 x 0.01 = 0.144 -> more than 14.4 % of runs failed
+        expr: |
+          sum(rate(worker_job_runs_total{job="expire-stale-reservations",outcome="failed"}[1h]))
+            / sum(rate(worker_job_runs_total{job="expire-stale-reservations"}[1h])) > 0.144
+          and
+          sum(rate(worker_job_runs_total{job="expire-stale-reservations",outcome="failed"}[5m]))
+            / sum(rate(worker_job_runs_total{job="expire-stale-reservations"}[5m])) > 0.144
+        for: 2m
+        labels:
+          severity: page
+          team: pms-property
+          service: property-worker
+        annotations:
+          summary: "expire-stale-reservations is failing (14.4x budget burn)"
+          description: "{{ $value | humanizePercentage }} of the runs failed in the last hour."
+          runbook_url: "https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/07-runbook.md"
+
+      - alert: ExpiryJobSlowBurn
+        # 6 x 0.01 = 0.06 -> more than 6 % of runs failed
+        expr: |
+          sum(rate(worker_job_runs_total{job="expire-stale-reservations",outcome="failed"}[6h]))
+            / sum(rate(worker_job_runs_total{job="expire-stale-reservations"}[6h])) > 0.06
+          and
+          sum(rate(worker_job_runs_total{job="expire-stale-reservations",outcome="failed"}[30m]))
+            / sum(rate(worker_job_runs_total{job="expire-stale-reservations"}[30m])) > 0.06
+        for: 5m
+        labels:
+          severity: ticket
+          team: pms-property
+          service: property-worker
+        annotations:
+          summary: "expire-stale-reservations fails more than it should (6x budget burn)"
+          description: "{{ $value | humanizePercentage }} of the runs failed over 6 hours."
+          runbook_url: "https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/07-runbook.md"
+
+      - alert: ExpiryJobNotRunning
+        # A job that stopped produces no failures at all: watch the last success.
+        expr: time() - max(worker_job_last_success_timestamp_seconds{job="expire-stale-reservations"}) > 300
+        for: 1m
+        labels:
+          severity: page
+          team: pms-property
+          service: property-worker
+        annotations:
+          summary: "expire-stale-reservations has not finished a run in 5 minutes"
+          description: "Unpaid reservations are not being expired; their dates stay locked."
+          runbook_url: "https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/07-runbook.md"
+
+  - name: expirar-latency-slo
+    rules:
+      - alert: ExpirarLatencyBurn
+        # 14.4 x 0.01 = 0.144 -> more than 14.4 % of expirar calls slower than 0.25 s
+        expr: |
+          1 - sum(rate(booking_expire_duration_seconds_bucket{le="0.25"}[1h]))
+            / sum(rate(booking_expire_duration_seconds_count[1h])) > 0.144
+          and
+          1 - sum(rate(booking_expire_duration_seconds_bucket{le="0.25"}[5m]))
+            / sum(rate(booking_expire_duration_seconds_count[5m])) > 0.144
+        for: 0m
+        labels:
+          severity: ticket
+          team: pms-property
+          service: booking-service
+        annotations:
+          summary: "POST /api/v1/reservas/{id}/expirar is slow"
+          description: "More than 14.4 % of expirar calls took longer than 250 ms in the last hour."
+          runbook_url: "https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/07-runbook.md"
