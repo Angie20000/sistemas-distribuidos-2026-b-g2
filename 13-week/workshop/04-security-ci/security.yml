@@ -1,0 +1,77 @@
+# Proposal for the pipeline of code-corhuila/property-booking-db (week 13, CP4).
+# It lives in my fork; it does not change the team repository today.
+name: booking-db-security
+
+on:
+  pull_request:
+    branches: [develop, qa]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: code-corhuila/property-booking-db
+          fetch-depth: 0
+      - name: Secret scan (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Vulnerability audit of the images we run (Liquibase and PostgreSQL)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: liquibase/liquibase:4.29
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+
+  privileges:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: property
+          POSTGRES_USER: property_admin
+          POSTGRES_PASSWORD: ci-only
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U property_admin" --health-interval 2s --health-retries 20
+    env:
+      PGHOST: localhost
+      PGUSER: property_admin
+      PGPASSWORD: ci-only
+      PGDATABASE: property
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: code-corhuila/property-booking-db
+      - uses: actions/checkout@v4
+        with:
+          path: proposal
+      - name: Prepare the instance like property-infra-postgres
+        run: |
+          psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS pgcrypto; CREATE EXTENSION IF NOT EXISTS btree_gist;"
+          psql -v ON_ERROR_STOP=1 -c "CREATE ROLE booking_app LOGIN PASSWORD 'ci-only';"
+      - name: Apply the migrations
+        run: |
+          docker run --rm --network host -v "$PWD:/liquibase/changelog" liquibase/liquibase:4.29 \
+            --url=jdbc:postgresql://localhost:5432/property --username=property_admin --password=ci-only \
+            --changelog-file=changelog/changelog-master.yaml \
+            --database-changelog-table-name=databasechangelog_booking \
+            --database-changelog-lock-table-name=databasechangeloglock_booking update
+      - name: Negative privilege test
+        run: psql -v ON_ERROR_STOP=1 -f proposal/13-week/workshop/04-security-ci/negative_booking_app_privileges.sql
