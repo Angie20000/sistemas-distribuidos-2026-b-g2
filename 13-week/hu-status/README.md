@@ -1,37 +1,15 @@
-<!-- HU-STATUS TEMPLATE - do NOT remove the <!-- ... --> markers or the table headers.
-     Your weekly grade is read AUTOMATICALLY from this file:
-       13-week/hu-status/README.md  (inside YOUR fork). English. -->
+# Week 13 — HU status (Angie20000)
 
-# Weekly Status - Week 13
+## Threat modeling workshop
 
-<!-- CONFIG-START - must match your profile repo (username/username) CONFIG -->
-- FULL_NAME:
-- GITHUB_USER:
-- TEAM:
-- SPRINT_GOAL:
-<!-- CONFIG-END -->
+- Boundary: booking-api -> PostgreSQL (schema booking) — claim issue https://github.com/code-corhuila/property-docs/issues/168
+- Attack surface: 13-week/workshop/01-attack-surface.md
+- STRIDE pull request: https://github.com/code-corhuila/property-docs/pull/173
+- Security stories:  https://github.com/code-corhuila/property-docs/issues/174, https://github.com/code-corhuila/property-docs/issues/175, https://github.com/code-corhuila/property-docs/issues/176
+- Security CI proposal: 13-week/workshop/04-security-ci/
+- Review comment on a teammate's pull request: https://github.com/code-corhuila/property-docs/pull/169/changes#r4419921452
 
-## 1. User stories worked this week
-| HU ID | Title | Status (todo/doing/done) | Evidence (PR or commit URL) |
-|---|---|---|---|
-| HU-XXX-001 |  |  |  |
+## Commits
 
-## 2. My individual contribution
--
+- https://github.com/code-corhuila/property-docs/pull/173/commits
 
-## 3. Blockers and risks
--
-
-## 4. Plan for next week
--
-
-## 5. Compliance self-check
-- [ ] Conventional Commits - `type(scope): summary`
-- [ ] Per-environment HU branch + PR to that environment (hu-xxx-dev -> develop, ...)
-- [ ] Testable acceptance criteria
-- [ ] Tests added/updated (unit / integration)
-- [ ] DDD / hexagonal boundaries respected (domain has no I/O)
-- [ ] No secrets; config via environment variables
-
-## 6. Evidence links
--
