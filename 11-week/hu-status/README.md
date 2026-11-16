@@ -22,6 +22,7 @@
 | W11-CP7 | Burn-rate alerts plus an alert for a job that stopped running | done | https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/06-alerts.yml |
 | W11-CP8 | Runbook of `ExpiryJobFastBurn` | done | https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/07-runbook.md |
 | W11-CP9 | Drill: Booking slow on `expirar`, postmortem and three stories | done | https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/blob/main/11-week/workshop/08-incident.md |
+| W11-DOCS | Microservices documentation: service catalog and boundary rules, catalog service with its readiness check, and notification service and worker in `05-architecture/microservices` | done | https://github.com/code-corhuila/property-docs/pull/158, https://github.com/code-corhuila/property-docs/pull/159, https://github.com/code-corhuila/property-docs/pull/160 |
 
 ## 2. My individual contribution
 - Mapped the expiry journey, which has no user request: each run of the job starts its own trace.
@@ -30,6 +31,7 @@
 - Wrote the metric catalog, including a signal for when the job silently stops running.
 - Set three SLOs for the expiry (one is time-based: no reservation stuck more than 20 minutes), the alerts and the runbook.
 - Ran a drill with Booking slow on `expirar`; the postmortem found a table lock in the outbox relay and turned it into three user stories.
+- Wrote the `docs(microservices)` pull requests of my services: https://github.com/code-corhuila/property-docs/pull/158, https://github.com/code-corhuila/property-docs/pull/159, https://github.com/code-corhuila/property-docs/pull/160 (merged).
 
 ## 3. Blockers and risks
 - The worker and Booking are not built yet; the module is standalone until corte 3.
@@ -44,9 +46,11 @@
 - [ ] Per-environment HU branch + PR to that environment (hu-xxx-dev -> develop, ...) — *(individual workshop in my fork)*
 - [x] Testable acceptance criteria
 - [x] Tests added/updated (unit / integration) — *(`ExpiryTraceTest`)*
-- [ ] DDD / hexagonal boundaries respected (domain has no I/O)
+- [ ] DDD / hexagonal boundaries respected (domain has no I/O) — *(no domain code this week)*
 - [x] No secrets; config via environment variables — *(the worker's service token is in the never-log list)*
 
 ## 6. Evidence links
 - Workshop: https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/tree/main/11-week/workshop
+- Commits of the workshop in my fork: https://github.com/Angie20000/sistemas-distribuidos-2026-b-g2/commits/main/11-week
+- Microservices documentation pull requests: https://github.com/code-corhuila/property-docs/pull/158, https://github.com/code-corhuila/property-docs/pull/159, https://github.com/code-corhuila/property-docs/pull/160
 - property-docs: https://github.com/code-corhuila/property-docs

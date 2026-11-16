@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: co.edu.corhuila.property.booking.expiry.ExpiryTraceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.279 s -- in co.edu.corhuila.property.booking.expiry.ExpiryTraceTest
