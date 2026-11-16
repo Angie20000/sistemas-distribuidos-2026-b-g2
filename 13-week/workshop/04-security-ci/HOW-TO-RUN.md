@@ -16,4 +16,14 @@ Table: `booking.reservation`. User: `booking_app` (role `booking_writer`, A3).
 3. Expected: two notices, `OK: booking_app cannot DELETE reservations` and
    `OK: booking_app cannot create tables`, and exit code 0.
 
-The real console output is added in CP8.
+## Real output (CP8)
+
+```
+PEGA AQUÍ LAS ÚLTIMAS LÍNEAS DE LA CONSOLA
+```
+
+## security.yml validation
+
+```
+PEGA AQUÍ LA SALIDA DE ACTIONLINT (si no imprimió nada, escribe: actionlint printed no errors)
+```
